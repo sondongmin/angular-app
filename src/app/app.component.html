@@ -1,0 +1,46 @@
+<div class="background">
+  <div class="flex-column">
+    <mat-card class="card">
+      <h1 class="flex-column">Password Generator</h1>
+
+      <mat-form-field class="full-width">
+        <mat-label>Enter Length</mat-label>
+        <input matInput (input)="onChangeLength($event.target.value)">
+      </mat-form-field>
+
+      <div>
+        <mat-checkbox [(ngModel)]="includeLetters">Letters</mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox [(ngModel)]="includeUppercase">Uppercase</mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox [(ngModel)]="includeNumbers">Numbers</mat-checkbox>
+      </div>
+      <div>
+        <mat-checkbox [(ngModel)]="includeSymbols">Symbols</mat-checkbox>
+      </div>
+
+
+      <div class="flex-column">
+        <button mat-button color="primary" [disabled]="!(length && (includeLetters || includeSymbols || includeNumbers))" (click)="onButtonClick()">Generate</button>
+      </div>
+
+        <input class="input" [type]="type" matInput [value]="password" >
+
+        <div class="flex-row">
+          <button (click)="onToggle()" mat-icon-button color="primary">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button [cdkCopyToClipboard]="password" mat-icon-button color="primary">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+
+
+
+
+    </mat-card>
+  </div>
+
+</div>
